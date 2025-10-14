@@ -1,0 +1,410 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{extramarks}
+\usepackage[english]{babel}
+
+%
+% Basic Document Settings
+%
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\rhead{\textbf{\authorName}}
+\chead{\textbf{Exercises for \textit{\bookTitle}}}
+\cfoot{\thepage}
+\lhead{\firstxmark}
+\lfoot{\lastxmark}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Exercise Sections
+%
+\newcommand{\enterExerciseHeader}[1]{
+    \nobreak\extramarks{}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Exercise \arabic{#1} (continued)}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitExerciseHeader}[1]{
+    \nobreak\extramarks{Exercise \arabic{#1} (continued)}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Exercise \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{exerciseCounter}
+\setcounter{exerciseCounter}{1}
+\nobreak\extramarks{Exercise \arabic{exerciseCounter}}{}\nobreak{}
+
+\newenvironment{exercise}[1][-1]{
+    \ifnum#1>0
+        \setcounter{exerciseCounter}{#1}
+    \fi
+    \section{Exercise \arabic{exerciseCounter}}
+    \setcounter{partCounter}{1}
+    \enterExerciseHeader{exerciseCounter}
+}{
+    \exitExerciseHeader{exerciseCounter}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\bookTitle}{Linear Algebra Done Right}
+\newcommand{\bookAuthor}{Sheldon Axler}
+\newcommand{\authorName}{Max Besley}
+
+%
+% Title Page
+%
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\bookTitle:\ Exercises}}\\
+    \vspace{0.1in}\large{\textbf{Textbook by \bookAuthor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\authorName}}
+\date{}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section{\underline{\Large{Exercises 1A}}} \vspace{5mm}
+
+\begin{exercise}[6]
+    \begin{proof}
+        Assume $\alpha = a+bi \in \C$ and $\alpha \neq 0$.
+
+        Let $\beta = \dfrac{a-bi}{a^2+b^2}$. Then using the arithmetic
+        properties of complex numbers we can easily verify $\alpha\beta = 1$.
+
+        If $\alpha\gamma = 1$ and $\alpha\beta = 1$ then $\alpha\gamma
+        = \alpha\beta$ and multiplying both sides by $\alpha^{-1} \in \C$
+        on the left gives $\alpha = \gamma$, showing that this multiplicative inverse
+        is unique.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[7]
+    We compute,
+
+    \begin{equation*}
+    \begin{split}
+        \left( \dfrac{-1+\sqrt{3}i}{2} \right)^3
+        & = \dfrac{1}{8} \left( -2 - 2\sqrt{3}i \right) \left( -1 + \sqrt{3}i \right) \\
+        & = \dfrac{1}{8} \left( 2 + -2\sqrt{3}i + 2\sqrt{3}i + 6 \right) \\
+        & = 1
+    \end{split}
+    \end{equation*}
+\end{exercise}
+
+\begin{exercise}[8]
+    Two square roots of the imaginary unit $i$ are $z_1 = \frac{\sqrt{2}}{2} +\frac{\sqrt{2}}{2}i$ and $z_2 = -z_1$.
+
+    It is easy to check that indeed $z_1^2 = i = (-z_1)^2$.
+\end{exercise}
+
+\pagebreak
+
+\section{\underline{\Large{Exercises 1B}}} \vspace{5mm}
+
+\begin{exercise}[2]
+    \begin{proof}
+        Suppose $a \in \F$, $\vec{v} \in V$, and $a\vec{v} = \vec{0}$.
+        Assume for the sake of contradiction that $a \neq 0$ and $\vec{v} \neq \vec{0}$.
+        By \textsc{Theorem 1.31} we have $a\vec{0} = \vec{0}$.
+        Also because $a \neq 0$ we know $a^{-1} \in \F$ exists.
+        Multiplying each side of the equation $a\vec{v} = a\vec{0}$ by $a^{-1}$
+        on the left gives $\vec{v} = \vec{0}$, a contradiction.
+        Thus, $a = 0$ or $\vec{v} = \vec{0}$.
+    \end{proof}
+\end{exercise}
+
+\pagebreak
+
+\section{\underline{\Large{Exercises 1C}}} \vspace{5mm}
+
+\begin{exercise}[4]
+    \begin{proof}
+        ($\implies$):
+        Assume this set of functions $W$ is a subspace of $\R^{[0,1]}$. \\
+        By this assumption the zero function $0(x) = 0\ \forall x \in \R$
+        is contained in W and $\int_0^1 0 = b$. But clearly $\int_0^1 0 = 0$
+        and thus $b = 0$.
+
+        ($\impliedby$):
+        Assume $b = 0$. We have,
+        \begin{enumerate}
+            \item $\int_0^1 0 = 0$
+            \item $\int_0^1 f+g = \int_0^1 f + \int_0^1 g = 0+0 = 0$
+            \item $\int_0^1 \lambda f = \lambda \int_0^1 f = \lambda 0 = 0$
+                  where $\lambda \in \F$
+        \end{enumerate}
+        So this subset of $\R^{[0,1]}$ is a subspace by \textsc{Theorem 1.34}.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[9]
+    In general, the set of periodic functions from $\R$ to
+     $\R$ does not form a subspace, because functions with
+    different periods may form a sum that is not periodic. \\
+    However, if we fix a real number $q \in \R$ then the
+    set $\{f: \R \to \R \mid \textit{f is q-periodic}\}$
+    forms a subspace of $\R^{\R}$.
+\end{exercise}
+
+\begin{exercise}[12]
+    \begin{proof}
+        ($\impliedby$):
+        Suppose $U$ and $W$ are subspaces of $V$ and $U \subseteq W$.
+        Then $U \cup W = W$ which is a subspace of $V$ by assumption. \\
+
+        ($\implies$):
+        Suppose $U \cup W$ is a subspace of V, where $U$ and $W$ are subspaces.
+        For the sake of contradiction further suppose $U \nsubseteq W$ and $W \nsubseteq U$.
+        Then there is a $\vec{u} \in U$ with $\vec{u} \notin W$ and a $\vec{w} \in W$ with $\vec{w} \notin U$.
+        Now since $\vec{u} \in U \cup W$ and $\vec{w} \in U \cup W$ by
+        closure under addition we have $\vec{u}+\vec{w} \in U \cup W$.
+        However, if $\vec{u}+\vec{w} \in U$ then by closure $\vec{u}+\vec{w}-\vec{u} = \vec{w} \in U$, a contradiction.
+        Likewise if $\vec{u}+\vec{w} \in W$. \\
+        Thus we must have $U \subseteq W$ or $W \subseteq U$.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[15]
+    If $U$ is a linear subspace then $U + U = U$.
+    \begin{proof}
+        By \textsc{Theorem 1.40} we have $U \subseteq U + U$.
+        Now assume $\vec{x} + \vec{y} \in U + U$.
+        Then by closure under vector addition $\vec{x} + \vec{y}
+        \in U$ and so $U + U \subseteq U$.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[18]
+    In this case the additive identity is the trivial subspace: $U + \{\vec{0}\} = U$. \\
+    Intuitively, if $U + W = \{\vec{0}\}$ then every pair of elements of $U$ and $W$ are
+    additive inverses of each other. Because additive inverses are unique this should
+    not generally be possible. In fact, $U + W = \{\vec{0}\}$ if and only if
+    $U = W = \{\vec{0}\}$.
+    \begin{proof}
+        The backwards direction is clear. \\
+        ($\implies$) Assume $U + W = \{\vec{0}\}$. As with all subspaces
+        $\{\vec{0}\} \subseteq U$ and $\{\vec{0}\} \subseteq W$. By
+        \textsc{theorem 1.40} we have $U \subseteq \{\vec{0}\}$ and
+        $W \subseteq \{\vec{0}\}$ and thus $U = W = \{\vec{0}\}$.
+    \end{proof}
+\end{exercise}
+
+\pagebreak
+
+\section{\underline{\Large{Exercises 2A}}} \vspace{5mm}
+
+\begin{exercise}[4]
+    Part (a)
+    \begin{proof}
+        ($\implies$):
+        Assume the list $\{\vec{v}\}$ is linearly independent. \\
+        If $\vec{v}$ is the zero vector then we have $(1)\vec{v} = \vec{0}$,
+        which contradicts the linear independence of $\{\vec{v}\}$.
+        Thus we must have $\vec{v} \neq \vec{0}$. \\
+
+        ($\impliedby$):
+        Assume $\vec{v} \neq \vec{0}$. \\
+        Then by \textsc{Exercise 2 of 1B}
+        whenever $\alpha \vec{v} = \vec{0}$ where $\alpha \in \F$
+        we must have $\alpha = 0$, which show that $\{\vec{v}\}$
+        is linearly independent.
+    \end{proof}
+    Part (b)
+    \begin{proof}
+        ($\implies$):
+        Assume the list $\{\vec{u},\vec{v}\}$ is linearly independent. \\
+        If $\alpha \vec{u} = \vec{v}$ for some $\alpha \in \F$ (that is
+        the vectors are scalar multiples of each other) then we can rearrange
+        to get $\alpha \vec{u}-\vec{v}=0$, which contradicts the assumption
+        that $\{\vec{u},\vec{v}\}$ is linearly independent. Thus, the two
+        vectors in the list are not scalar multiples of each other. \\
+
+        ($\impliedby$):
+        Assume $\vec{u}$ and $\vec{v}$ are not scalar multiples of each other. \\
+        This means there is no $\alpha \in \F$ such that $\alpha \vec{u} = \vec{v}$.
+        If $\beta \vec{u} + \gamma \vec{v} = \vec{0}$ for $\beta, \gamma \in \F$ we
+        must have $\beta = 0 = \gamma$, otherwise $-\frac{\beta}{\gamma}\vec{u} =
+        \vec{v}$, which is a contradiction. Hence, the list $\{\vec{u},\vec{v}\}$
+        is linearly independent.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[7]
+    Part (a) \\
+    Assuming $a,b \in \R$ are scalars we have
+    \begin{align*}
+    0 = a(1+i)+b(1-i) = a+b+i(a-b)
+    \end{align*}
+    which implies that
+    \begin{align*}
+    a+b=i(b-a).
+    \end{align*}
+    A real number cannot be a multiple of $i \in \C$ and
+    so we must have $a+b=0$ and $b-a=0$, which has one
+    solution $a=b=0$. Thus, the list $\{1+i,1-i\}$ is
+    linearly independent. \\\\
+    Part (b) \\
+    We compute $i(1-i)=1+i$. So by \textsc{Exercise 4b of 2A}
+    the list $\{1+i,1-i\}$ is linearly dependent.
+\end{exercise}
+
+\begin{exercise}[10]
+    \begin{proof}
+    Suppose $\vec{v_1},\ldots,\vec{v_m}$ is a linearly independent
+    list of vectors and $\lambda \in \F$ with $\lambda \neq 0$. \\\\
+    Then if $\alpha_1,\ldots,\alpha_m \in \F$ are scalars we have
+    \begin{align*}
+        \sum_{i=1}^{m} \alpha_i(\lambda \vec{v_i}) = \vec{0}
+        &\implies \lambda \sum_{i=1}^{m} \alpha_i \vec{v_i} = \vec{0} \\\
+        &\implies \sum_{i=1}^{m} \alpha_i \vec{v_i} = \vec{0} \ \ \text{(since $\lambda \neq 0$)} \\\
+        &\implies \alpha_i = 0 \ \text{for all} \ 1 \leqslant i \leqslant m \ \ \text{(by linear independence of $\vec{v_1},\ldots,\vec{v_m}$)} \\\
+    \end{align*}
+    Thus, $\lambda \vec{v_1},\lambda \vec{v_2},\ldots,\lambda \vec{v_m}$ is a linearly independence list of vectors. \\
+    \end{proof}
+    Note also that $\text{span}(\lambda \vec{v_1},\ldots,\lambda \vec{v_m}) = \text{span}(\vec{v_1},\ldots,\vec{v_m})$
+\end{exercise}
+
+\begin{exercise}[11]
+    This is false.
+    For a counterexample, let $V = \R^2$ and take the two linearly
+    independent lists $\{(1,0),(0,1)\}$ and $\{(0,-1),(-1,0)\}$.
+    Then the new list is $\{(1,-1),(-1,1)\}$ which is linearly dependent.
+\end{exercise}
+
+\begin{exercise}[12]
+    Note that this result is uninteresting if $\vec{w} = 0$. So further assume $\vec{w} \neq 0$.
+    \begin{proof}
+        Assume $\vec{v_1}+\vec{w},\ldots,\vec{v_m}+\vec{w}$ is linearly dependent. \\
+        Then there exists $\alpha_1,\ldots,\alpha_m \in \F$, not all zero, such that
+        $\alpha_1(\vec{v_1}+\vec{w})+\ldots+\alpha_m(\vec{v_m}+\vec{w})=\vec{0}$ and
+        by rearranging terms we obtain $\alpha_1\vec{v_1}+\ldots+\alpha_m\vec{v_m}=
+        -(\alpha_1+\ldots+\alpha_m)\vec{w}$. Because the vectors $\vec{v_1},\ldots,
+        \vec{v_m}$ are linearly independent and the $\alpha_i$ are not all zero we
+        must have $\alpha_1+\ldots+\alpha_m \neq 0$. Dividing through by $\beta =
+        -(\alpha_1 + \ldots + \alpha_m)$ gives $\vec{w} = \frac{\alpha_1}{\beta}
+        \vec{v_1} + \ldots + \frac{\alpha_m}{\beta}\vec{v_m}$ and thus $\vec{w}
+        \in \text{span}(\vec{v_1},\ldots,\vec{v_m})$.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[13]
+    Let $\vec{v_1},\ldots,\vec{v_m}$ be linearly independent in $V$ and $\vec{w} \in V$.
+    \begin{proof}
+        ($\implies$):
+        Assume $\vec{v_1},\ldots,\vec{v_m},\vec{w}$ is linearly independent.
+        By this assumption $\vec{w} \in V$ cannot be written as a linear
+        combination of the vectors $\vec{v_1},\ldots,\vec{v_m} \in V$.
+        Thus $\vec{w} \notin \text{span}(\vec{v_1},\ldots,\vec{v_m})$. \\
+
+        ($\impliedby$):
+        Assume $\vec{w} \notin \text{span}(\vec{v_1},\ldots,\vec{v_m})$.
+        For the sake of a contradiction, further assume that the list
+        $\vec{v_1},\ldots,\vec{v_m},\vec{w}$ is linearly dependent.
+        Then by \textsc{theorem 2.19} at least one of these vectors
+        is in the span of the previous ones. If $\vec{w} \in
+        \text{span}(\vec{v_1},\ldots,\vec{v_m})$ then we clearly
+        have a contradiction. But if one of the $v_i$'s is contained
+        in the span of the vectors before it then this contradicts
+        the linear independence of $\vec{v_1},\ldots,\vec{v_m}$.
+        Thus the list $\vec{v_1},\ldots,\vec{v_m},\vec{w}$ must be
+        linearly independent.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[15]
+    We have $\mathcal{P}_4(\F)=\text{span}(1,z,z^2,z^3,z^4)$ which
+    is a spanning set of length five. So by \textsc{theorem 2.22}
+    there does not exist a list of six (or more) polynomials in
+    $\mathcal{P}_4(\F)$ that is linearly independent.
+\end{exercise}
+
+\begin{exercise}[16]
+    The list $1,z,z^2,z^3,z^4$ of five polynomials in $\mathcal{P}_4(\F)$
+    is linearly independent. So by \textsc{theorem 2.22} there is no list of
+    four polynomials that spans $\mathcal{P}_4(\F)$, otherwise we would
+    have a contradiction.
+\end{exercise}
+
+\begin{exercise}[17]
+    \begin{proof}
+        ($\implies$):
+        Assume that $V$ is infinite-dimensional. \\
+        This means that there is no (finite) list
+        of vectors that spans the vector space $V$. \\
+        We construct the desired infinite sequence of vectors
+        in $V$ through the following process. \\\\
+        $\underline{\textbf{Step 1:}}$ \\
+        Pick any vector $\vec{v_1} \in V$ and form the list
+        $B = \{\vec{v_1}\}$, which is linearly independent. \\\\
+        $\underline{\textbf{Step \textit{m}:}}$ \\
+        Because $V$ is infinite-dimensional we have $\text{span}(B)
+        \neq V$, and in particular $\text{span}(B) \subset V$.
+        Choose a vector $v_m \in V$ that is not contained in
+        $\text{span}(B)$ and append it to the end of $B$.
+        Now repeat \textit{step m}. \\\\
+        By \textsc{Exercise 13 of 2A} the resulting list $B$
+        (of length $m \in \N$) in \textit{step m} is linearly independent.
+        The process will never terminate since $V$ is infinite-dimensional.
+        Thus these steps produce the desired infinite sequence of vectors. \\
+
+        ($\impliedby$):
+        Assume we have such an infinite sequence of vectors in $V$.
+        Assume $V$ is finite-dimensional and that $V=\text{span}
+        (\vec{v_1},\ldots,\vec{v_k})$, where this list of vectors
+        is of length $k \in \N$. Using our infinite sequence we can
+        obtain a linearly independent list of vectors of length
+        $n \in \N$ where $n > k$. However this contradicts
+        \textsc{theorem 2.22}. Hence, $V$ is infinite-dimensional.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[18]
+    Consider the sequence of vectors $(1,0,0,0,\ldots),\ (0,1,
+    0,0,\ldots),\ (0,0,1,0,\ldots),\ldots$ in $\F^{\infty}$ and
+    apply the theorem from the previous exercise.
+\end{exercise}
+
+\begin{exercise}[19]
+    TODO: I don't know currently how to prove this rigorously, but it
+    seems related to the \textit{Weierstrass Approximation Theorem}.
+\end{exercise}
+
+\end{document}
+
