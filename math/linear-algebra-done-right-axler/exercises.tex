@@ -150,6 +150,64 @@
     \end{proof}
 \end{exercise}
 
+\begin{exercise}[4]
+    The empty set fails to satisfy the \textit{additive identity}
+    property and thus is not a vector space. Every other vector
+    space property is vacuously true in this case.
+\end{exercise}
+
+\begin{exercise}[5]
+    We prove that
+    \begin{align*}
+        \text{$0\vec{v}=\vec{0}$ for all $\vec{v} \in V$} \iff
+        \text{For every $\vec{v} \in V$ there exists $\vec{w}
+        \in V$ such that $\vec{v}+\vec{w}=\vec{0}$} \\
+    \end{align*}
+    \begin{proof}
+        ($\implies$):
+        We compute
+        \begin{equation*}
+            \vec{0}=0\vec{v}=(1+(-1))\vec{v}=1\vec{v}+(-1)\vec{v}=\vec{v}+(-1)\vec{v}
+        \end{equation*}
+        By the closure of scalar multiplication $(-1)\vec{v} \in V$, proving this direction. \\\\
+        ($\impliedby$):
+        We have
+        \begin{equation*}
+            \vec{0}+\vec{v}=\vec{v}=1\vec{v}=(0+1)\vec{v}=0\vec{v}+1\vec{v}=0\vec{v}+\vec{v}
+        \end{equation*}
+        Now adding the additive inverse $-\vec{v} \in V$ to both sides gives $\vec{0}=0\vec{v}$.
+        Completing the proof.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[8]
+    Let $\vec{u_1},\vec{u_2},\vec{v_1},\vec{v_2} \in V$. \\
+    Showing associativity and distributivity is too tedious and is omitted. \\\\
+    \textbf{Commutativity:} \\
+    \begin{equation*}
+    \begin{split}
+        (\vec{u_1}+i\vec{v_1})+(\vec{u_2}+i\vec{v_2}) & = (\vec{u_1}+\vec{u_2})+i(\vec{v_1}+\vec{v_2}) \\
+                              & = (\vec{u_2}+\vec{u_1})+i(\vec{v_2}+\vec{v_1}) \\
+                              & = (\vec{u_2}+i\vec{v_2})+(\vec{u_1}+i\vec{v_1})
+    \end{split}
+    \end{equation*} \\
+    \textbf{Additive identity:} \\
+    The vector $\vec{0}+i\vec{0}$ is the additive identity of $V_{\C}$. \\\\
+    \textbf{Additive inverse:} \\
+    Given $\vec{u}+i\vec{v} \in V_{\C}$ the additive inverse of
+    this vector is $-\vec{u}+i(-\vec{v}) \in V_{\C}$. \\\\
+    \textbf{Multiplicative identity:} \\
+    \begin{equation*}
+    \begin{split}
+        (1)(\vec{u}+i\vec{v}) & = (1+i0)(\vec{u}+i\vec{v}) \\
+                              & = (1\vec{u}+0\vec{v})+i(1\vec{v}+0\vec{u}) \\
+                              & = \vec{u}+i\vec{v}
+    \end{split}
+    \end{equation*}
+    and so $1 \in \C$ is the multiplicative identity of $V_{\C}$. \\\\
+    Hence the complexification of $V$, denoted $V_{\C}$, is a vector space over $\C$.
+\end{exercise}
+
 \pagebreak
 
 \section{\underline{\Large{Exercises 1C}}} \vspace{5mm}
@@ -172,6 +230,14 @@
         \end{enumerate}
         So this subset of $\R^{[0,1]}$ is a subspace by \textsc{Theorem 1.34}.
     \end{proof}
+\end{exercise}
+
+\begin{exercise}[5]
+    No. Here the field of scalars is $\C$ and so the subset
+    $\R^2 \subseteq \C^2$ fails to be closed under scalar
+    multiplication. \\
+    On the other hand, $\R^2$ \textit{is} a subspace
+    of the \textit{real} vector space $\C^2$.
 \end{exercise}
 
 \begin{exercise}[9]
@@ -226,9 +292,36 @@
     \end{proof}
 \end{exercise}
 
+\begin{exercise}[19]
+    This is false. For a counterexample let $V=\R^4$, $U=\text{span}
+    (\vec{e_1},\vec{e_2})$, $V_1=\text{span}(\vec{e_1},\vec{e_3})$,
+    and $V_2=\text{span}(\vec{e_2},\vec{e_3})$.
+    Then $V_1 + U = V_2 + U$ however $V_1 \neq V_2$.
+\end{exercise}
+
+\begin{exercise}[20]
+    Let $W =\text{span}(\vec{e_2},\vec{e_4})$.
+    Then it's easy to see that $\F^4 = U \oplus W$.
+\end{exercise}
+
+\begin{exercise}[23]
+    This is false. For a counterexample let $V=\R^2$, $U=\text{span}\{(0,1)\}$,
+    $V_1=\text{span}\{(1,0)\}$ and $V_2=\text{span}\{(1,1)\}$.
+    Then $V = V_1 \oplus U$ and $V = V_2 \oplus U$ however $V_1 \neq V_2$.
+\end{exercise}
+
 \pagebreak
 
 \section{\underline{\Large{Exercises 2A}}} \vspace{5mm}
+
+\begin{exercise}[1]
+    The list $(1,0,-1),(0,1,-1),(3,0,-3),(0,2,-2)$ spans this subspace
+    of $\F^3$. \\ We can see this in the equation,
+    \begin{equation*}
+        a(1,0,-1) + b(0,1,-1) + c(3,0,-3) + d(0,2,-2) = (a+3c,b+2d,-a-b-3c-2d)
+    \end{equation*}
+    where $a,b,c,d \in \F$.
+\end{exercise}
 
 \begin{exercise}[4]
     Part (a)
@@ -406,5 +499,286 @@
     seems related to the \textit{Weierstrass Approximation Theorem}.
 \end{exercise}
 
-\end{document}
+\pagebreak
 
+\section{\underline{\Large{Exercises 2B}}} \vspace{5mm}
+
+\begin{exercise}[1]
+    Assume that the vector space field is either $\R$ or $\C$, ignoring
+    vector spaces over finite fields such as $\F_2$. \\\\
+    The trivial vector space has exactly one basis, the empty list $\{\}$. \\
+    Now assume $\vec{v_1},\vec{v_2},\ldots,\vec{v_n}$ is the only basis for
+    a vector space $V$. The list $\vec{v_1}+\vec{v_2},\vec{v_2},\ldots,
+    \vec{v_n}$ is also a basis for $V$ (this is easy to check). By the
+    uniqueness of our original basis we must have $\vec{v_1}=\vec{v_1}+
+    \vec{v_2}$ which implies that $\vec{v_2}=\vec{0}$, a contradiction
+    since a basis cannot contain the zero vector. \\
+    If $\text{dim}\ V = 1$ a similar argument shows that there cannot be
+    a single unique basis of $V$. \\\\
+    Hence the only vector space with exactly one basis is the trivial
+    vector space $\{\vec{0}\}$ of dimension zero.
+\end{exercise}
+
+\begin{exercise}[3]
+    (a) \\
+    The list $(3,1,0,0,0),(0,0,7,1,0),\vec{e_5}$ is a basis of $U\subseteq\R^5$. \\\\
+    (b) \\
+    First append the standard basis of $\R^5$, $\vec{e_1},\vec{e_2},\vec{e_3},
+    \vec{e_4},\vec{e_5}$, to the end of the list from part (a). Then apply the
+    procedure from the proof of \textsc{theorem 2.30}, which will give this
+    basis of $\R^5$: $(3,1,0,0,0),(0,0,7,1,0),\vec{e_5},\vec{e_1},\vec{e_3}$. \\\\
+    (c) \\
+    Here we follow the logic of the proof of \textsc{theorem 2.33} by defining
+    the subspace $W=\text{span}(\vec{e_1},\vec{e_3})\subseteq\R^5$. \\
+    It is clear that $U \cap W = \{\vec{0}\}$. Moreover if $(x_1,x_2,x_3,x_4,x_5)
+    \in \R^5$ we can write:
+    \begin{equation*}
+    (x_1,x_2,x_3,x_4,x_5) = \underbrace{(3x_2,x_2,7x_4,x_4,x_5)}_\textsl{$\in$ U}
+                        + \underbrace{(x_1-3x_2,0,x_3-7x_4,0,0)}_\textsl{$\in$ W}
+    \end{equation*}
+    which demonstrates that $\R^5 = U + W$. Thus $\R^5 = U \oplus W$.
+\end{exercise}
+
+\begin{exercise}[5]
+    \begin{proof}
+        By \textsc{theorems 2.25 and 2.31} the subspaces $U$ and $W$ have
+        bases, say, $\vec{u_1},\ldots,\vec{u_m}$ and $\vec{w_1},\ldots,\vec{w_n}$,
+        respectively. If $\vec{v} \in V$ we can write $\vec{v}=\vec{u}+\vec{w}$
+        for some $\vec{u} \in U$ and $\vec{w} \in W$ (since $V=U+W$). We can also
+        write $\vec{u}=\alpha_1\vec{u_1}+\cdots+\alpha_m\vec{u_m}$ and $\vec{w}=
+        \beta_1\vec{w_1}+\cdots+\beta_n\vec{w_n}$ for some $\alpha_i,\beta_i \in \F$
+        (since $\vec{u_1},\ldots,\vec{u_m}$ and $\vec{w_1},\ldots,\vec{w_n}$ are
+        bases for $U$ and $W$). And so $\vec{v}$ can be expressed as $\vec{v}=
+        \alpha_1\vec{u_1}+\cdots+\alpha_m\vec{u_m}+\beta_1\vec{w_1}+\cdots+
+        \beta_n\vec{w_n}$ and thus $V=\text{span}(\vec{u_1},\ldots,\vec{u_m},
+        \vec{w_1},\ldots,\vec{w_n})$. \\ Now apply the procedure from the
+        proof of \textsc{theorem 2.30} to the list $\vec{u_1},\ldots,\vec{u_m},
+        \vec{w_1},\ldots,\vec{w_n}$ and through this we obtain a basis for $V$.
+        Since the procedure only removes vectors from the original list, the
+        vectors in this basis are contained in $U \cup W$, completing the proof.
+    \end{proof}
+\end{exercise}
+
+\pagebreak
+
+\begin{exercise}[6]
+    Here is a counterexample. \\
+    Consider the list $1,x,x^3+x^2,-x^3+x^2$ in $\mathcal{P}_3(\F)$.
+    None of these polynomials have degree two, however (using \textsc{theorem 2.38})
+    they form a basis of $\mathcal{P}_3(\F)$ because they are linearly independent
+    and the list is of length four.
+\end{exercise}
+
+\begin{exercise}[7]
+    Assume that $\vec{w} \in V$.
+    Then $\vec{w} = a_1 \vec{v_1} + a_2 \vec{v_2} + a_3 \vec{v_3} + a_4 \vec{v_4}$
+    for some scalars $a_i \in \F$. \\
+    First we compute,
+    \begin{equation*}
+        \begin{split}
+        \vec{w} & = a_1 \vec{v_1} + a_2 \vec{v_2} + a_3 \vec{v_3} + a_4 \vec{v_4} \\
+                & = a_1\vec{v_1} + a_1\vec{v_2} + (a_2-a_1)\vec{v_2} + (a_2-a_1)\vec{v_3} + (a_3-a_2+a_1)\vec{v_3} + (a_3-a_2+a_1)\vec{v_4} + (a_4-a_3+a_2-a_1)\vec{v_4} \\
+                & = a_1(\vec{v_1}+\vec{v_2}) + (a_2-a_1)(\vec{v_2}+\vec{v_3}) + (a_3-a_2+a_1)(\vec{v_3}+\vec{v_4}) + (a_4-a_3+a_2-a_1)\vec{v_4}
+        \end{split}
+    \end{equation*}
+    And thus $\vec{w} \in \text{span}(v_1+v_2,v_2+v_3,v_3+v_4,v_4)$ and this list
+    of four vectors spans $V$. \\\\
+    Secondly, $\vec{v_1}+\vec{v_2}\neq\vec{0}$ because $\vec{v_1}\neq-\vec{v_2}$.
+    We have $\vec{v_2}+\vec{v_3}\notin\text{span}(\vec{v_1}+\vec{v_2})$ since this
+    is logically equivalent to $\vec{v_3}\notin\text{span}(\vec{v_1},\vec{v_2})$.
+    A similar argument shows $\vec{v_3}+\vec{v_4}\notin\text{span}(\vec{v_1}+\vec
+    {v_2},\vec{v_2}+\vec{v_3})$ and the same holds for the last vector $\vec{v_4}$. \\
+    So by \textsc{theorem 2.19} (the \textit{linear dependence lemma}) the list
+    $v_1+v_2,v_2+v_3,v_3+v_4,v_4$ is linearly independent, and thus is a basis of $V$.
+\end{exercise}
+
+\begin{exercise}[8]
+    Here is a counterexample. \\
+    Consider the subspace $U = \text{span}(1,x,x^2)$ of $\mathcal{P}_3(\F)$ and the
+    basis from \textsc{exercise 6}: $1,x,x^3+x^2,-x^3+x^2$. The first two basis
+    vectors are contained in $U$ and the last two basis vectors are not contained
+    in $U$. However, the first two basis vectors $1,x \in \mathcal{P}_3(\F)$ do not
+    form a basis of $U$ (since $U$ is of dimension three).
+\end{exercise}
+
+\begin{exercise}[10]
+    \begin{proof}
+        For every $\vec{v} \in V$ we have $\vec{v}=\vec{u}+\vec{w}$
+        for some $\vec{u} \in U$ and $\vec{w} \in W$.
+        We can write $\vec{u}=\alpha_1\vec{u_1}+\cdots+\alpha_m\vec{u_m}$ and
+        $\vec{w}=\beta_1\vec{w_1}+\cdots+\beta_n\vec{w_n}$ where $\alpha_i,\beta_i \in \F$.
+        So we can express $\vec{v}$ as $\vec{v}=\alpha_1\vec{u_1}+\cdots+\alpha_m
+        \vec{u_m}+\beta_1\vec{w_1}+\cdots+\beta_n\vec{w_n}$ and thus $V=\text{span}(
+        \vec{u_1},\ldots,\vec{u_m},\vec{w_1},\ldots,\vec{w_n})$. \\\\
+        To show linearly independence suppose $\alpha_1\vec{u_1}+\cdots+
+        \alpha_m\vec{u_m}+\beta_1\vec{w_1}+\cdots+\beta_n\vec{w_n}=\vec{0}$.
+        We can rearrange to get $U \ni \alpha_1\vec{u_1}+\cdots+\alpha_m\vec{u_m}
+        =-\beta_1\vec{w_1}-\cdots-\beta_n\vec{w_n} \in W$ and because $U \cap W = \{\vec{0}\}$
+        this implies that both vectors are zero and then using the fact that $\vec{u_1},\ldots,
+        \vec{u_m}$ and $\vec{w_1},\ldots,\vec{w_n}$ are bases we conclude that $\alpha_1=\cdots
+        =\alpha_m=\beta_1=\cdots=\beta_n=0$. Thus the list $\vec{u_1},\ldots,\vec{u_m},\vec{w_1}
+        ,\ldots,\vec{w_n}$ is linearly independent and is a basis of $V$.
+    \end{proof}
+\end{exercise}
+
+\pagebreak
+
+\begin{exercise}[11]
+    First observe that we can identify each basis vector $\vec{v_i} \in
+    V$ with the "complexified" vector $\vec{v_i}+i\vec{0} \in V_\C$. \\\\
+    We now prove that $\vec{v_1},\ldots,\vec{v_n}$ (which is shorthand for
+    $\vec{v_1}+i\vec{0},\ldots,\vec{v_n}+i\vec{0}$) is a basis of $V_\C$.
+    \begin{proof}
+    Suppose $\vec{u}+i\vec{w} \in V_\C$. \\
+    Because $\vec{v_1},\ldots,\vec{v_n}$ is a basis of $V$ we have $\vec{u}=
+    \alpha_1\vec{v_1}+\ldots+\alpha_n\vec{v_n}$ for unique scalars $\alpha_k
+    \in \R$ and $\vec{w}=\beta_1\vec{v_1}+\ldots+\beta_n\vec{v_n}$ for unique
+    scalars $\beta_k \in \R$. We then can write,
+    \begin{equation*}
+        \vec{u}+i\vec{w}=(\alpha_1\vec{v_1}+\ldots+\alpha_n\vec{v_n})+
+        i(\beta_1\vec{v_1}+\ldots+\beta_n\vec{v_n})=(\alpha_1+i\beta_1)
+        \vec{v_1}+\ldots+(\alpha_n+i\beta_n)\vec{v_n}.
+    \end{equation*}
+    The complex numbers $\alpha_k+i\beta_k \in \C$ are unique because their
+    real components are unique. Thus by \textsc{theorem 2.28} the list
+    $\vec{v_1},\ldots,\vec{v_n}$ is a basis of the complex vector
+    space $V_\C$.
+    \end{proof}
+    Note that the complexification of a real vector space can also be defined
+    as a tensor product of two real vector spaces: $V_\C = V \otimes \C$.
+\end{exercise}
+
+\pagebreak
+
+\section{\underline{\Large{Exercises 2C}}} \vspace{5mm}
+
+\begin{exercise}[1]
+    \begin{proof}
+        By \textsc{theorem 2.37} all subspaces of $\R^2$ are of dimension
+        zero, one or two. By \textsc{theorem 2.39} the only subspace of
+        dimension two is $\R^2$ itself and clearly the only subspace of
+        dimension zero is the trivial subspace $\{\vec{0}\}$. Hence it
+        suffices to show that every subspace of dimension one is a line
+        containing the origin. \\
+        Suppose $U\subseteq\R^2$ is a subspace with $\text{dim}\ U = 1$
+        and $\{\vec{u}\}$ is a basis of $U$ (which must exist by
+        \textsc{theorem 2.31}). Then by the definition of a basis we
+        have $U=\text{span}(\vec{u})=\{\lambda\vec{u}\mid\lambda\in\R\}$,
+        which in $\R^2$ is a line containing the origin.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[2]
+    \begin{proof}
+        Similarly to the previous exercise, it suffices to show that every
+        subspace of dimension one is a line containing the origin and every
+        subspace of dimension two is a plane containing the origin. \\
+        The same argument from the previous exercise shows that every
+        one-dimensional subspace $U \subseteq \R^3$ is equal to
+        $\text{span}(\vec{u})$ for some $\vec{u} \in \R^3$ (i.e. a
+        straight line through the origin). \\
+        Now suppose $U \subseteq \R^3$ is a two-dimensional subspace and
+        $\{\vec{u},\vec{w}\}$ is a basis of $U$. Then $U=\text{span}(\vec
+        {u},\vec{w})=\{\alpha\vec{u}+\beta\vec{w}\mid\alpha,\beta\in\R\}$
+        (which is a plane containing the origin), completing the proof.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[11]
+    Assume $\F=\R$. By \textsc{theorem 2.43} we have $\text{dim}(U+W)=
+    \text{dim }U+\text{dim }W-\text{dim}(U \cap W)=8-\text{dim}(U \cap W)
+    \leq\text{dim }\C^6=6$ where the inequality holds by \textsc{theorem
+    2.37}. So $\text{dim}(U \cap W)\geq2$. Thus by the linear independence
+    of any basis of $U \cap W$ there exists two vectors such that neither
+    of these vectors is a scalar multiple of the other.
+\end{exercise}
+
+\begin{exercise}[12]
+    We have $8=\text{dim }\R^8=\text{dim}(U+W)=\text{dim }U+\text{dim }W-
+    \text{dim}(U \cap W)=3+5-\text{dim}(U \cap W)$ and so $\text{dim}(U\cap W)
+    =0$ which implies that $U\cap W = \{\vec{0}\}$. Now applying
+    \textsc{theorem 1.46} gives $\R^8 = U \oplus W$.
+\end{exercise}
+
+\begin{exercise}[13]
+    We have $\text{dim}(U+W)=\text{dim }U+\text{dim }W-\text{dim}(U \cap W)=
+    10-\text{dim}(U \cap W)\leq\text{dim }\R^9=9$. So $\text{dim}(U \cap W)
+    \geq1$ and thus $U \cap W \neq \{\vec{0}\}$.
+\end{exercise}
+
+\pagebreak
+
+\begin{exercise}[14]
+    Using \textsc{theorem 2.43} and \textsc{theorem 2.37} we have
+    \begin{equation*}
+        \text{dim}(V_1+V_2)=\text{dim }V_1+\text{dim }V_2-
+        \text{dim}(V_1 \cap V_2)=7+7-\text{dim}(V_1 \cap V_2)
+        \leq 10=\text{dim }V
+    \end{equation*}
+    and so $\text{dim}(V_1 \cap V_2)\geq 4$. \\\\
+    Also observe that by \textsc{theorem 2.37} we have $\text{dim}((V_1 \cap V_2)+V_3) \leq 10$. \\\\
+    Then,
+    \begin{equation*}
+        \begin{split}
+        \text{dim}(V_1 \cap V_2 \cap V_3) & = \text{dim}(V_1\cap V_2)+\text{dim }V_3-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & = \text{dim}(V_1\cap V_2)+7-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & \geq 11-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & \geq 11-10 \\
+                                          & = 1
+        \end{split}
+    \end{equation*}
+    and thus $V_1 \cap V_2 \cap V_3$ is a non-trivial subspace of $V$.
+\end{exercise}
+
+\begin{exercise}[15]
+    Assume that $\text{dim }V_1+\text{dim }V_2+\text{dim }V_3 > 2\cdot\text{dim }V$. \\
+    We have,
+    \begin{equation*}
+        \begin{split}
+        \text{dim}(V_1 \cap V_2 \cap V_3) & = \text{dim}(V_1\cap V_2)+\text{dim }V_3-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & = \text{dim }V_1+\text{dim }V_2-\text{dim}(V_1+V_2)+\text{dim }V_3-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & > 2\cdot\text{dim }V-\text{dim}(V_1+V_2)-\text{dim}((V_1\cap V_2)+V_3) \\
+                                          & = [\text{dim }V-\text{dim}(V_1+V_2)]+[\text{dim }V-\text{dim}((V_1\cap V_2)+V_3)] \\
+                                          & \geq 0
+        \end{split}
+    \end{equation*}
+    and thus $V_1 \cap V_2 \cap V_3$ is a non-trivial subspace of $V$.
+\end{exercise}
+
+\begin{exercise}[17]
+    \begin{proof}
+    Suppose that $V_1,\ldots,V_m$ are finite-dimensional subspaces of $V$. \\
+    We can prove this result straightforwardly using induction. Alternatively,
+    by repeatedly applying \textsc{theorem 2.43} and the associativity of
+    sums of subspaces we obtain the formula:
+
+    \begin{equation*}
+        \text{dim}(V_1+\cdots+V_m) = \sum_{j=1}^{m} \text{dim}\ V_j
+        - \sum_{j=2}^{m} \text{dim}(V_{j-1} \cap (V_j+\cdots+V_m))
+        \leq \sum_{j=1}^{m} \text{dim}\ V_j
+    \end{equation*}
+
+    And because the subspaces $V_j$ are finite-dimensional, the sum
+    $V_1+\cdots+V_m$ is therefore finite-dimensional.
+    Completing the proof.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}[18]
+    \begin{proof}
+    Suppose $V$ is finite-dimensional, with $\text{dim}\ V = n \geq 1$. \\
+    Let $\vec{v_1},\ldots,\vec{v_n}$ be a basis of $V$. For each $1 \leq
+    j \leq n$ define the subspace $V_j = \text{span}(\vec{v_j})$. \\
+    Because $\vec{v_1},\ldots,\vec{v_n}$ is linearly independent, the only
+    way to write $\vec{0} \in V$ in the form $\vec{w_1}+\ldots+\vec{w_n}$ where
+    each $\vec{w_k} \in V_k$ is by taking each $\vec{w_k}$ equal to $\vec{0}$,
+    hence by \textsc{theorem 1.45} the sum $V_1+\cdots+V_m$ is a direct sum. \\
+    Now assume $\vec{x} \in V$. Because $\vec{v_1},\ldots,\vec{v_n}$ spans $V$,
+    we can write $\vec{x}=\alpha_1\vec{v_1}+\ldots+\alpha_n\vec{v_n}$ for some
+    scalars $\alpha_i \in \F$. But each $\alpha_i\vec{v_i}$ is contained in the
+    subspace $V_i$ and hence $\vec{x} \in V_1 \oplus \cdots \oplus V_n$. \\
+    Thus $V = V_1 \oplus \cdots \oplus V_n$.
+    \end{proof}
+\end{exercise}
+
+\end{document}
