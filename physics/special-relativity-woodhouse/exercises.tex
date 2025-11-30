@@ -1,0 +1,350 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{extramarks}
+\usepackage{derivative}
+\usepackage{nicematrix}
+\usepackage{tikz}
+\usepackage[english]{babel}
+
+%
+% Basic Document Settings
+%
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\rhead{\textbf{\authorName}}
+\chead{\textbf{Exercises for \textit{\bookTitle}}}
+\cfoot{\thepage}
+\lhead{\firstxmark}
+\lfoot{\lastxmark}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Exercise Sections
+%
+\newcommand{\enterExerciseHeader}[1]{
+    \nobreak\extramarks{}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Exercise \arabic{#1} (continued)}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitExerciseHeader}[1]{
+    \nobreak\extramarks{Exercise \arabic{#1} (continued)}{Exercise \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Exercise \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{exerciseCounter}
+\setcounter{exerciseCounter}{1}
+\nobreak\extramarks{Exercise \arabic{exerciseCounter}}{}\nobreak{}
+
+\newenvironment{exercise}[1][-1]{
+    \ifnum#1>0
+        \setcounter{exerciseCounter}{#1}
+    \fi
+    \section{Exercise \arabic{exerciseCounter}}
+    \setcounter{partCounter}{1}
+    \enterExerciseHeader{exerciseCounter}
+}{
+    \exitExerciseHeader{exerciseCounter}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\bookTitle}{Special Relativity}
+\newcommand{\bookAuthor}{Nick Woodhouse}
+\newcommand{\authorName}{Max Besley}
+
+%
+% Title Page
+%
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\bookTitle:\ Exercises}}\\
+    \vspace{0.1in}\large{\textbf{Textbook by \bookAuthor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\authorName}}
+\date{}
+
+\newcommand{\vect}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section{\underline{\Large{Chapter 1}}} \vspace{5mm}
+
+\begin{exercise}[1]
+    Showing associativity is omitted. \\
+
+    \textbf{Identity:} \\
+    Set $H=I_3$ and $C=\vect{0}$ and this isometry is the identity. \\
+
+    \textbf{Closure:} \\
+    Assume $\phi(\boldsymbol{x})=H_1\vect{x}+C_1$ and $\psi(\vect{x})=H_2\vect{x}+C_2$ are isometries of $\mathbb{E}$. \\
+    We have,
+    \begin{equation} \tag{*}
+    \begin{split}
+        (\psi\circ\phi)(\vect{x}) & = \psi(\phi(\vect{x})) \\
+                                  & = \psi(H_1\vect{x}+C_1) \\
+                                  & = H_2(H_1\vect{x}+C_1)+C_2 \\
+                                  & = H_2H_1\vect{x}+(H_2C_1+C_2)
+    \end{split}
+    \end{equation}
+    and so the map $\psi\circ\phi$ is also an isometry of $\mathbb{E}$. \\
+
+    \textbf{Inverses:} \\
+    Let $\psi(\vect{x})=H\vect{x}+C$ be an isometry of $\mathbb{E}$. \\
+    The inverse isometry map is $\psi^{-1}(\vect{x})=H^{-1}\vect{x}-H^{-1}C$.
+    In particular it's easy to check that $(\psi^{-1}\circ\psi)(\vect{x})=
+    \vect{x}=(\psi\circ\psi^{-1})(\vect{x})$ for any $\vect{x}\in\mathbb{E}$. \\
+
+    Hence the isometries of Euclidean space form a group. \\
+
+    We now show that the proper (orientation-preserving) isometries form a subgroup. \\
+
+    The identity map is a proper isometry since $\text{det}(I_3)=0$.
+    The composition of two proper isometries is a proper isometry because we will have
+    $\text{det}(H_2H_1)=\text{det}(H_2)\text{det}(H_1)=1\cdot1=1$ in equation (*).
+    Lastly, if $\psi(\vect{x})=H\vect{x}+C$ is a proper isometry we have $\text{det}(H^{-1})=\text{det}(H)^{-1}=1^{-1}=1$ and so the inverse map $\psi^{-1}$ is also
+    a proper isometry. Thus the proper isometries of $\mathbb{E}$ form a subgroup.
+\end{exercise}
+
+\NiceMatrixOptions
+{
+    custom-line ={command= H, tikz= dashed, width= 1mm}, % horizontal, dashed
+    custom-line = {letter= I, tikz= dashed, width= 1mm}, % vertical, dashed
+}
+
+\begin{exercise}[2]
+    (i)
+    We have
+    \begin{gather*}
+    t = t^\prime + c_0 \\
+    x=v_1 t^\prime + H_{11}x^\prime + H_{12}y^\prime + H_{13}z^\prime + c_1 \\
+    y=v_2 t^\prime + H_{21}x^\prime + H_{22}y^\prime + H_{23}z^\prime + c_2 \\
+    z=v_3 t^\prime + H_{31}x^\prime + H_{32}y^\prime + H_{33}z^\prime + c_3
+    \end{gather*}
+    and by the first equation $\odv{t^\prime}{t}=1$. Using the chain rule,
+    \begin{align*}
+    \odv{x}{t}=\odv{x}{t^\prime}\odv{t^\prime}{t}= v_1 \cdot 1 = v_1
+    \end{align*}
+    and likewise $\odv{y}{t}=v_2$ and $\odv{z}{t}=v_3$. \\\\
+    Thus we have $\vect{v}=\left(\odv{x}{t},\odv{y}{t},\odv{z}{t}\right)=\left(v_1,v_2,v_3\right)$
+    where $\vect{v}$ is the velocity of $R^\prime$ relative to the frame of
+    reference $R$. \\
+
+    (ii)
+    Suppose we have a second Galilean transformation \\
+    \begin{align*}
+        \begin{bmatrix} t^\prime \\ x^\prime \\ y^\prime \\ z^\prime \end{bmatrix}
+        =
+        \begin{bNiceMatrix}
+            1 & 0 & 0 & 0 \\
+            w_1 & K_{11} & K_{12} & K_{13} \\
+            w_2 & K_{21} & K_{22} & K_{23} \\
+            w_3 & K_{31} & K_{32} & K_{33}
+        \end{bNiceMatrix}
+        \begin{bmatrix} t^{\prime\prime} \\ x^{\prime\prime} \\ y^{\prime\prime} \\ z^{\prime\prime} \end{bmatrix}
+        + \begin{bmatrix} d_0 \\ d_1 \\ d_2 \\ d_3 \end{bmatrix}
+    \end{align*}
+
+    Composing with the first Galilean transformation gives
+    \begin{align*}
+        \begin{bmatrix} t \\ x \\ y \\ z \end{bmatrix} &=
+        \begin{bNiceMatrix}
+            1 & 0 & 0 & 0 \\
+            v_1 & H_{11} & H_{12} & H_{13} \\
+            v_2 & H_{21} & H_{22} & H_{23} \\
+            v_3 & H_{31} & H_{32} & H_{33}
+        \end{bNiceMatrix}
+        \left(
+        \begin{bNiceMatrix}
+            1 & 0 & 0 & 0 \\
+            w_1 & K_{11} & K_{12} & K_{13} \\
+            w_2 & K_{21} & K_{22} & K_{23} \\
+            w_3 & K_{31} & K_{32} & K_{33}
+        \end{bNiceMatrix}
+        \begin{bmatrix} t^{\prime\prime} \\ x^{\prime\prime} \\ y^{\prime\prime}
+        \\ z^{\prime\prime} \end{bmatrix}
+        + \begin{bmatrix} d_0 \\ d_1 \\ d_2 \\ d_3 \end{bmatrix}
+        \right)
+        + \begin{bmatrix} c_0 \\ c_1 \\ c_2 \\ c_3 \end{bmatrix} \\[1em]
+        &=
+        \begin{bNiceArray}{cIccc}[margin]
+            1 & 0 & 0 & 0 \\ \H
+            \Block{3-1}{\vect{v}+H\vect{w}} & \Block[c]{3-3}<\large>{HK} \\
+            & & & \\
+            & & &
+        \end{bNiceArray}
+        \begin{bmatrix} t^{\prime\prime} \\ x^{\prime\prime} \\ y^{\prime\prime}
+        \\ z^{\prime\prime} \end{bmatrix} +
+        \begin{bNiceMatrix} d_0 \\ \Block{*-1}{d_0\vect{v}+H\vect{d}} \end{bNiceMatrix}
+        + \begin{bmatrix} c_0 \\ c_1 \\ c_2 \\ c_3 \end{bmatrix}
+    \end{align*}
+    which again is a Galilean transformation as $HK \in SO(3)$.
+    Here $\vect{v}=\begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$,
+    $\vect{w}=\begin{bmatrix} w_1 \\ w_2 \\ w_3 \end{bmatrix}$
+    and $\vect{d}=\begin{bmatrix} d_1 \\ d_2 \\ d_3 \end{bmatrix}$. \\[0.5em]
+
+    The above vector $\vect{v}+H\vect{w}$ is consistent with the classical velocity addition
+    law. Recall that the vector $\vect{w}$ comes from the inertial frame $R^\prime$, and
+    so the orthogonal matrix $H$ is applied in order to translate from the coordinates
+    of $R^\prime$ into the coordinates of the inertial frame $R$. \\
+
+    The inverse of a general Galilean transformation is \\
+    \begin{equation*}
+        \begin{bmatrix} t^\prime \\ x^\prime \\ y^\prime \\ z^\prime \end{bmatrix}
+        =
+        \begin{bNiceArray}{cIccc}[margin]
+            1 & 0 & 0 & 0 \\ \H
+            \Block{3-1}{H^{-1}(\vect{-v})} & \Block[c]{3-3}<\large>{H^{-1}} \\
+            & & & \\
+            & & &
+        \end{bNiceArray}
+        \begin{bmatrix} t \\ x \\ y \\ z \end{bmatrix}
+        + \begin{bNiceMatrix} -c_0 \\ \Block{*-1}{H^{-1}(c_0\vect{v}-\vect{c})} \end{bNiceMatrix}
+    \end{equation*} \\
+    which is a Galilean transformation as $H^{-1} \in SO(3)$. \\
+
+    (iii) (A) \\
+    A Galilean transformation performs the mapping $t_i \mapsto t^{\prime}_i + c_0$
+    (where $i\in\{1,2\}$) on the two time coordinates. So the time separation between
+    the two events in the new frame $R^\prime$ is $t^{\prime}_2+c_0-(t^{\prime}_1+c_0)
+    =t^{\prime}_2-t^{\prime}_2=t_2-t_1$, using the fact that $t=t^\prime$ in Galilean relativity. \\
+
+    (iii) (B) \\
+    Assume that $t_1=t_2$. \\
+    Observe that a Galilean transformation maps the coordinates $(t_1,x_1,y_1,z_1)$
+    and $(t_2,x_2,y_2,z_2)$ to the new coordinates:
+    \begin{align*}
+        \begin{bNiceMatrix} t_1+c_0 \\ \Block{*-1}{\vect{v}t_1+H\vect{r_1}+\vect{c}} \end{bNiceMatrix}
+        \hspace{1em} \text{and} \hspace{1em}
+        \begin{bNiceMatrix} t_2+c_0 \\ \Block{*-1}{\vect{v}t_2+H\vect{r_2}+\vect{c}} \end{bNiceMatrix}
+    \end{align*}
+    where $\vect{r_i}=\begin{bmatrix} x_i \\ y_i \\ z_i \end{bmatrix}$
+    and $\vect{c}=\begin{bmatrix} c_1 \\ c_2 \\ c_3 \end{bmatrix}$. \\[1em]
+    Now we compute
+    \begin{align*}
+        \norm{\begin{bmatrix} x_2^\prime \\ y_2^\prime  \\ z_2^\prime  \end{bmatrix}-
+        \begin{bmatrix} x_1^\prime \\ y_1^\prime  \\ z_1^\prime  \end{bmatrix}}
+        &= \norm{\vect{v}t_2+H\vect{r_2}+\vect{c}-(\vect{v}t_1+H\vect{r_1}+\vect{c})} \\
+        &= \norm{(t_2-t_1)\vect{v}+H\vect{r_2}-H\vect{r_1}} \\
+        &= \norm{H\vect{r_2}-H\vect{r_1}} \\
+        &= \norm{\vect{r_2}-\vect{r_1}} \\
+        &= \sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
+    \end{align*}
+    and so the distance between the two events is preserved. \\
+    If the two events are not simultaneous then one of the frames may have
+    moved through space during the time interval $t_2-t_1$, thus increasing or
+    decreasing the measured spatial distance between the events. \\
+
+    Here I skip the last part. Perhaps I will do it later.
+\end{exercise}
+
+\pagebreak
+
+\section{\underline{\Large{Chapter 2}}} \vspace{5mm}
+
+\begin{exercise}[1]
+    (1) \\
+    \begin{equation*}
+       \begin{split}
+        \text{div}(\textbf{\textit{E}}^\prime)&=\text{div }[\text{cos}(\alpha)\textbf{\textit{E}}-\text{sin}(\alpha)c\textbf{\textit{B}}] \\
+        &=\text{cos}(\alpha)\text{div}(\textbf{\textit{E}})-\text{sin}(\alpha)c\ \text{div}(\textbf{\textit{B}}) \\
+        &=0+0=0
+        \end{split}
+    \end{equation*}
+
+    (2) \\
+    \begin{equation*}
+       \begin{split}
+        \text{div}(\textbf{\textit{B}}^\prime)&=\text{div }[c^{-1}\text{sin}(\alpha)\textbf{\textit{E}}+\text{cos}(\alpha)\textbf{\textit{B}}] \\
+        &=c^{-1}\text{sin}(\alpha)\text{div}(\textbf{\textit{E}})+\text{cos}(\alpha)\text{div}(\textbf{\textit{B}}) \\
+         &=0+0=0
+        \end{split}
+    \end{equation*}
+
+    (3) \\
+    \begin{equation*}
+       \begin{split}
+        \text{curl}(\textbf{\textit{B}}^\prime)&=c^{-1}\text{sin}(\alpha)\text{curl}(\textbf{\textit{E}})+\text{cos}(\alpha)\text{curl}(\textbf{\textit{B}}) \\
+        &=c^{-1}\text{sin}(\alpha)\left(-\pdv{\textbf{\textit{B}}}{t}\right)+\text{cos}(\alpha)\frac{1}{c^2}\pdv{\textbf{\textit{E}}}{t} \\
+        &=\frac{1}{c^2}\text{cos}(\alpha)\pdv{\textbf{\textit{E}}}{t}-c^{-1}\text{sin}(\alpha)\pdv{\textbf{\textit{B}}}{t} \\
+        &=\frac{1}{c^2}\left(\text{cos}(\alpha)\pdv{\textbf{\textit{E}}}{t}-\text{sin}(\alpha)\pdv{\left(c\textbf{\textit{B}}\right)}{t}\right) \\
+        &=\frac{1}{c^2}\pdv{\textbf{\textit{E}}^\prime}{t}
+        \end{split}
+    \end{equation*}
+
+    (4) \\
+    \begin{equation*}
+       \begin{split}
+        \text{curl}(\textbf{\textit{E}}^\prime)&=\text{cos}(\alpha)\text{curl}(\textbf{\textit{E}})-\text{sin}(\alpha)c\ \text{curl}(\textbf{\textit{B}}) \\
+        &=\text{cos}(\alpha)\left(-\pdv{\textbf{\textit{B}}}{t}\right)-\text{sin}(\alpha)c\ \frac{1}{c^2}\pdv{\textbf{\textit{E}}}{t} \\
+        &=-\left(c^{-1}\text{sin}(\alpha)\pdv{\textbf{\textit{E}}}{t}+\text{cos}(\alpha)\pdv{\textbf{\textit{B}}}{t}\right) \\
+        &=-\pdv{\textbf{\textit{B}}^\prime}{t}
+        \end{split}
+    \end{equation*}
+\end{exercise}
+
+\begin{exercise}[2]
+    Assume $x^2+y^2<a^2$. \\
+    Using an explicit formula for the curl operator we have \\
+    \begin{equation*}
+       \begin{split}
+        \nabla\times\textbf{\textit{B}}&=\nabla\times\left(\frac{I\mu_0(-y\mathbf{\hat{i}}+x\mathbf{\hat{j}})}{2\pi a^2}\right) \\
+        &=\frac{I\mu_0}{2\pi a^2}\ \nabla\times\left(-y\mathbf{\hat{i}}+x\mathbf{\hat{j}}\right) \\
+        &=\frac{I\mu_0}{2\pi a^2}\ 2\mathbf{\hat{k}} \\
+        &=\frac{I\mu_0}{\pi a^2}\mathbf{\hat{k}}
+        \end{split}
+    \end{equation*}
+    Now assuming $x^2+y^2 \geq a^2$ we have
+    \begin{equation*}
+       \begin{split}
+        \nabla\times\textbf{\textit{B}}&=\nabla\times\left(\frac{I\mu_0(-y\mathbf{\hat{i}}+x\mathbf{\hat{j}})}{2\pi (x^2+y^2)}\right) \\
+        &=\frac{I\mu_0}{2\pi}\ \nabla\times\left(\frac{-y\mathbf{\hat{i}}+x\mathbf{\hat{j}}}{x^2+y^2}\right) \\
+        &=\frac{I\mu_0}{2\pi a^2}\left(\frac{-x^2+y^2}{(x^2+y^2)^2}-\frac{-x^2+y^2}{(x^2+y^2)^2}\right)\mathbf{\hat{k}} \\
+        &=\vect{0}
+        \end{split}
+    \end{equation*}
+    Completing the exercise. \\
+    See https://pressbooks.online.ucf.edu/osuniversityphysics2/chapter/amperes-law/ for another
+    derivation of the magnetic field generated by an electric current in a straight wire.
+\end{exercise}
+
+\section{\underline{\Large{Chapter 3}}} \vspace{5mm}
+
+\begin{exercise}[1]
+\end{exercise}
+
+\end{document}
